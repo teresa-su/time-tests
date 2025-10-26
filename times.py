@@ -1,5 +1,5 @@
 import datetime
-import pytest
+from pytest import raises
 
 def time_range(start_time, end_time, number_of_intervals=1, gap_between_intervals_s=0):
     """
@@ -22,6 +22,10 @@ def compute_overlap_time(range1, range2):
         for start2, end2 in range2:
             low = max(start1, start2)
             high = min(end1, end2)
+
+            # Add test to check whether given time ranges actually overlap
+            if low >= high:
+                raise ValueError(f"Non-overlapping time ranges: {(start1, end1)} and {(start2, end2)}")
             overlap_time.append((low, high))
     return overlap_time
 
