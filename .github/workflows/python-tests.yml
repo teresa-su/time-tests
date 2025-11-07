@@ -23,4 +23,4 @@ jobs:
           pip install pytest pytest-cov
       - name: Test with pytest and coverage
         run: |
-          pytest --cov="times" --cov-report
+          pytest --cov="times"
